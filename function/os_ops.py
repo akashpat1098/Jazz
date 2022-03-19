@@ -1,5 +1,3 @@
-from ipaddress import ip_address
-import ipaddress
 import os
 import subprocess as sp
 import random
@@ -36,3 +34,5 @@ def find_my_ip():
     hostname=socket.gethostname()
     ip_address=socket.gethostbyname(hostname)
     return ip_address
+
+    
