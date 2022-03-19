@@ -6,6 +6,8 @@ import datetime
 import speech_recognition as sr
 import random
 import utils
+import function.os_ops as os
+import function.online_ops as on
 
 
 USERNAME=config("USER")
@@ -55,7 +57,7 @@ def takeCommand():
         query=r.recognize_google(audio,language="en-in")
         print(f"User said:{query}")
 
-        if not "stop" in query:
+        if query not in ("stop","exit"):
             # greet before doing some task
             speak(random.choice(utils.opening_text))
         else:
@@ -77,5 +79,35 @@ def takeCommand():
 
 if __name__=="__main__":
     wishMe()
-    speak("Hello World")
-    takeCommand()
+    while True:
+        query=takeCommand().lower()
+        if "notepad" in query:
+                os.open_notepad()
+
+        elif "calculator" in query:
+            os.open_calculator()
+
+        elif "music" in query:
+            os.playMusic()
+
+        elif "camera" in query:
+            os.open_camera()#prblm
+            
+        elif "cmd" in query or "command prompt" in query:
+            print("Successfull")
+            os.open_cmd()
+        
+        elif "wikipedia" in query: #prblm
+            speak("Searching Wikipedia...")
+            query=query.replace("wikipedia","")
+            results=on.search_on_wikipedia(query=query)
+            speak("According to Wikipedia")
+            print(results)
+            speak(results)
+
+        elif "ip" in query:
+            ip=os.find_my_ip()
+            print(f"Your ip address is {ip}")
+            speak(f"Your ip address is {ip}")
+
+        # elif "send email"
