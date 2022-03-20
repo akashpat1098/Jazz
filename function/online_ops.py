@@ -1,5 +1,4 @@
 from email.message import EmailMessage
-from unittest import result
 import wikipedia
 from decouple import config
 import smtplib
@@ -14,8 +13,9 @@ NEWS_API_KEY = config("NEWS_API_KEY")
 OPENWEATHERMAP_API_KEY=config("OPENWEATHERMAP_API_KEY")
 TMDB_USER_API_KEY=config("TMDB_USER_API_KEY")
 
-
+# function for searching query in wikipedia
 def search_on_wikipedia(query):
+    # works in other comps
     results=wikipedia.summary(query,sentences=2)
     return results
 
@@ -25,11 +25,16 @@ def search_on_wikipedia(query):
 # def search_on_youtube(query):
 #     kit.playonyt(query)
 
+# function for getting ip 
+# it is online function 
 def find_my_ip():
+    # works in other comps
     ip_address = requests.get('https://api64.ipify.org?format=json').json()
     return ip_address["ip"]
     
+# for getting the latest news
 def get_latest_news():
+    # needs API key 
     news_headlines = []
     url = f"https://newsapi.org/v2/top-headlines?country=in&apiKey={NEWS_API_KEY}"
     res = requests.get(url).json()
@@ -38,7 +43,9 @@ def get_latest_news():
         news_headlines.append(article["title"])
     return news_headlines[:5]
 
+# for sending email
 def send_email(receiver_address, subject, message):
+    # works in other comps
     try:
         email = EmailMessage()
         email["To"] = receiver_address
@@ -57,17 +64,21 @@ def send_email(receiver_address, subject, message):
         print(e)
         return False
 
-
+# fo getting jokes
 def get_random_joke():
+    # works in other comps
     headers = {"Accept": "application/json"}
     res = requests.get("https://icanhazdadjoke.com/", headers=headers).json()
     return res["joke"]
 
+# for getting advice
 def get_random_advice():
+    # works in other comps
     res=requests.get("https://api.adviceslip.com/advice").json()
     return res["slip"]["advice"]
 
 def get_weather_report(city):
+    # need API key 
     res=requests.get(f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={OPENWEATHERMAP_API_KEY}&units=metric").json()
     weather=res["weather"][0]["main"]
     temperature=res["main"]["temp"]
@@ -75,9 +86,10 @@ def get_weather_report(city):
     return weather,f"{temperature}°C",f"{feels_like}°C"
 
 def get_trending_movies():
+    # need API key
     trending_movies=[]
     res=requests.get(f"https://api.themoviedb.org/3/trending/movie/day?api_key={TMDB_USER_API_KEY}").json()
     results=res["results"]
     for r in results:
         trending_movies.append(r["original_title"])
-    return trending_movies[:5]
+    return trending_movies[:5] 

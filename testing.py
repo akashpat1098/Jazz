@@ -1,6 +1,7 @@
-import cv2
-import function.online_ops as a
-
+# import cv2
+# import function.online_ops as a
+import json
+# ----------------------------------------------------------------------------
 # vid=cv2.VideoCapture(0)
 
 
@@ -32,7 +33,8 @@ import function.online_ops as a
 # cv2.destroyAllWindows()
 # print("The video was successfully saved!")
 
-
+# ----------------------------------------------------------------------------------------
+# vid=cv2.VideoCapture(0)
 # cv2.namedWindow("test")
 # i=0
 # while vid.isOpened():
@@ -54,5 +56,17 @@ import function.online_ops as a
 #         i+=1
 # vid.release()
 # cv2.destroyAllWindows()
+# -------------------------------------------------------------------------------------
+{
+    "akash": "akashpatel1098@gmail.com",
+    "sky": "onlyskymovie2020@gmail.com",
+    "patel": "patelakash1098@gmail.com"
+}
+email={'akash': 'akashpatel1098@gmail.com', 'sky': 'onlyskymovie2020@gmail.com', 'patel': 'patelakash1098@gmail.com',"sau":"saurabh@gamil.com"}
 
-
+# with open("emails.json","r")  as f:
+#     old_dic=dict(json.loads(f.read()))
+#     print(old_dic)
+# old_dic.
+with open("emails.json","w")  as f:
+    json.dump(email,f,indent=4)
