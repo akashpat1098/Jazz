@@ -1,5 +1,4 @@
-from email.mime import audio
-from pip import main
+from msilib.schema import AdvtUISequence
 import pyttsx3
 from decouple import config
 import datetime
@@ -8,6 +7,7 @@ import random
 import utils
 import function.os_ops as os
 import function.online_ops as on
+import requests
 
 
 USERNAME=config("USER")
@@ -63,18 +63,16 @@ def takeCommand():
         query=r.recognize_google(audio,language="en-in")
         print(f"User said:{query}")
 
-        if "stop" not in query or "exit" not in query:
-            # greet before doing some task
-            speak(random.choice(utils.opening_text))
-        else:
-            # greet before exiting
+        if "stop" in query or "exit" in query:
+             # greet before exiting
             if hour >=21 and hour < 6:
                 speak("Good night sir, take care!")
-                exit()
-
             else:
                 speak("Have a good day sir!")
-                exit()
+            exit()    
+        else:
+           # greet before doing some task
+            speak(random.choice(utils.opening_text))
 
     except Exception as e:
         # print(e)
@@ -111,11 +109,11 @@ if __name__=="__main__":
             speak(results) 
 
         elif "ip" in query:
-            ip=os.find_my_ip()
+            ip=on.find_my_ip()
             print(f"Your ip address is {ip}")
             speak(f"Your ip address is {ip}")
 
-        elif f"email to" in query: 
+        elif "email to" in query: 
             '''these for loop initialise name with a key of dictionary emails if that key is in the query'''
             for key in emails.keys():
                 if key in query:
@@ -143,3 +141,49 @@ if __name__=="__main__":
                 print(e)
                 print("Sending email failed...")
                 speak("Sorry,I am unable to send to the mail")
+
+        # elif "open youtube" in query:
+        #     speak("What should I play sir?")
+        #     result=takeCommand().lower()
+        #     on.search_on_youtube(result)
+
+        # elif "open google" in query:
+        #     speak("What should I search sir?")
+        #     result=takeCommand().lower()
+        #     on.search_on_google(result)
+        elif "news" in query:
+            speak("I'm reading out the latest news headlines, sir")
+            result=on.get_latest_news()
+            for title in result:
+                speak(title)
+                print(title)
+
+
+        elif "joke" in query:
+            speak("Hope you like this one sir")
+            result=on.get_random_joke()
+            print(result)
+            speak(result)
+
+        elif "advice" in query:
+            speak("Here's an advice for you,sir")
+            advice=on.get_random_advice()
+            print(advice)
+            speak(advice)
+
+        elif "trending movie" in query:
+            movies=on.get_trending_movies()
+            print(f"Some of the trending movies are:")
+            for movie in movies:
+                print(movie)
+            speak(f"Some of the trending movies are:{movies}")
+
+        elif 'weather' in query:
+            ip_address = on.find_my_ip()
+            city = requests.get(f"https://ipapi.co/{ip_address}/city/").text
+            print(f"Getting weather report for your city {city}")
+            speak(f"Getting weather report for your city {city}")
+            weather, temperature, feels_like = on.get_weather_report(city)
+            print(f"Description: {weather}\nTemperature: {temperature}\nFeels like: {feels_like}")
+            speak(f"The current temperature is {temperature}, but it feels like {feels_like}")
+            speak(f"Also, the weather report talks about {weather}")

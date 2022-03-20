@@ -35,4 +35,3 @@ def find_my_ip():
     ip_address=socket.gethostbyname(hostname)
     return ip_address
 
-    
