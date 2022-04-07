@@ -1,9 +1,10 @@
 # Jazz
+<pre>
 Steps to run this program
 1. Download a repository 
 2. Run the requirement.txt  file and downlaod all the required modules
-    **Run this command**
-        python -m pip install -r requirements.txt
+   **Run this command**
+      python -m pip install -r requirements.txt>
 
 3. make ".env "file and add foolowing data into it:**naming file :-<no name>.env .You dont have to give name of the file just make file with name of ".env"**
     **name of the user**
