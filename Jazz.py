@@ -100,9 +100,13 @@ if __name__=="__main__":
         elif "cmd" in query or "command prompt" in query:
             os.open_cmd()
         # to search wikepedia about something
-        elif "wikipedia" in query: #prblm
+        elif "wikipedia" in query: #sometime with searchable name prblm
             speak("Searching Wikipedia...")
             query=query.replace("wikipedia","")#replacing the word "wikipedia" from query
+            query=query.replace("Please","")
+            query=query.replace("search","")
+            query=query.replace("in","")
+            query=query.replace("about","")
             results=on.search_on_wikipedia(query=query)
             speak("According to Wikipedia")
             print(results)
@@ -145,7 +149,6 @@ if __name__=="__main__":
                 if res=="yes":
                     speak("Sir,you have to give the data of that person manually for simplicity purpose!")
                     speak("What is the name of person,sir?")
-                    print()
                     to=input("Type the name of a person:")
                     if to in emails.keys():#checking again if the given name is in the dict or not
                         pass    #if name is there then it will directly go to try block for sending mail
@@ -168,6 +171,7 @@ if __name__=="__main__":
                 print(f"Email is been sending to {emails[to]}")
                 speak(f"Email is been sending to {emails[to]}")
                 speak("Please confirm this last time") 
+                print("Say Yes or No!")
                 confirmation=takeCommand()  #take comfirmation for sending the mail
                 if confirmation=="yes":
                     on.send_email(emails[to],subject,content)   #calling function of send_email to send email with given data
@@ -180,16 +184,6 @@ if __name__=="__main__":
                 print(e)
                 print("Sending email failed...")
                 speak("Sorry,I am unable to send to the mail")
-
-        # elif "open youtube" in query:
-        #     speak("What should I play sir?")
-        #     result=takeCommand().lower()
-        #     on.search_on_youtube(result)
-
-        # elif "open google" in query:
-        #     speak("What should I search sir?")
-        #     result=takeCommand().lower()
-        #     on.search_on_google(result)
 
         # to here some news
         elif "news" in query:
@@ -232,3 +226,33 @@ if __name__=="__main__":
             print(f"Description: {weather}\nTemperature: {temperature}\nFeels like: {feels_like}")
             speak(f"The current temperature is {temperature}, but it feels like {feels_like}")
             speak(f"Also, the weather report talks about {weather}")
+
+        elif "hello" in query:
+            speak("Hello Sir , I am Jazz. Your personal  AI assistant! How may I help you?")
+        
+        elif "how are you" in query:
+            speak("I am fine sir! What about you ,sir?")
+        elif "I am fine" in query:
+            speak("Me too sir. What I can do for you ,Sir?")
+        elif "take a break" in query:
+            speak("Ok sir! You can call me anytime")
+            break
+        elif "kya haal hai" in query:
+            speak("Main badiya hoon. App batao")
+        elif "bye" in query:
+            speak("Okay sir! Bye")
+            break
+        elif "search on youtube" in query:
+            query=query.replace("search on youtube","")
+            query=query.replace("Jazz","")
+            on.search_on_youtube(query=query)
+        elif "website" in query:
+            query=query.replace("Jazz","")
+            query=query.replace("website","")
+            query=query.replace("search","")
+            query=query.replace(".com","")
+            query=query.replace("of","")
+            on.search_website(query.strip()) 
+
+
+        

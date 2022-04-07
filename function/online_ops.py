@@ -2,8 +2,8 @@ from email.message import EmailMessage
 import wikipedia
 from decouple import config
 import smtplib
-# import pywhatkit as kit
 import requests
+import webbrowser
 
 
 
@@ -22,8 +22,14 @@ def search_on_wikipedia(query):
 # def search_on_google(query):
 #     kit.search(query)
 
-# def search_on_youtube(query):
-#     kit.playonyt(query)
+def search_on_youtube(query):
+    url=f"https://www.youtube.com/results?search_query={query}"
+    webbrowser.open(url)
+
+def search_website(query):
+    print(query)
+    url="https://"+query+".com"
+    webbrowser.open(url)
 
 # function for getting ip 
 # it is online function 
