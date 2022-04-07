@@ -32,7 +32,10 @@ with open("emails.json","w")  as f:
 --> You have to make 2 file:
     1->.env where passwords and API key will be there
     2->emails.json file where emails in format of json strings will be there
+
 5. change the "paths" of directory of dictionary in "utils.py" 
+
 6. You have to turn on the less secure app in of logined account
+
 7. Lastly,Run the Jazz.py file 
 
