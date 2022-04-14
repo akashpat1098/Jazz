@@ -70,3 +70,4 @@ email={'akash': 'akashpatel1098@gmail.com', 'sky': 'onlyskymovie2020@gmail.com',
 # old_dic.
 with open("emails.json","w")  as f:
     json.dump(email,f,indent=4)
+# Akash chutiya hai
