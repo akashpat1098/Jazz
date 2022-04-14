@@ -68,6 +68,5 @@ import json
 #     old_dic=dict(json.loads(f.read()))
 #     print(old_dic)
 # old_dic.
-# with open("emails.json","w")  as f:
 #     json.dump(email,f,indent=4)
 
