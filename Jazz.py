@@ -253,6 +253,11 @@ if __name__=="__main__":
             query=query.replace(".com","")
             query=query.replace("of","")
             on.search_website(query.strip()) 
-
+        
+        elif "message" in query:
+            speak("Dhroov randi")
+            speak("kaam kiya kya lavdae ,jo bola thaa madrchodh")
+            speak("Maa ki chuhhuuuuu......")
+            speak("Dhroov chuutiya , gaandu apna kaam kar lavdae")
 
         

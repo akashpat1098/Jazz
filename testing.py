@@ -57,16 +57,17 @@ import json
 # vid.release()
 # cv2.destroyAllWindows()
 # -------------------------------------------------------------------------------------
-{
-    "akash": "akashpatel1098@gmail.com",
-    "sky": "onlyskymovie2020@gmail.com",
-    "patel": "patelakash1098@gmail.com"
-}
-email={'akash': 'akashpatel1098@gmail.com', 'sky': 'onlyskymovie2020@gmail.com', 'patel': 'patelakash1098@gmail.com',"sau":"saurabh@gamil.com"}
+# {
+#     "akash": "akashpatel1098@gmail.com",
+#     "sky": "onlyskymovie2020@gmail.com",
+#     "patel": "patelakash1098@gmail.com"
+# }
+# email={'akash': 'akashpatel1098@gmail.com', 'sky': 'onlyskymovie2020@gmail.com', 'patel': 'patelakash1098@gmail.com',"sau":"saurabh@gamil.com"}
 
 # with open("emails.json","r")  as f:
 #     old_dic=dict(json.loads(f.read()))
 #     print(old_dic)
 # old_dic.
-with open("emails.json","w")  as f:
-    json.dump(email,f,indent=4)
+# with open("emails.json","w")  as f:
+#     json.dump(email,f,indent=4)
+
