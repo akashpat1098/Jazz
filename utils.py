@@ -7,7 +7,7 @@ opening_text = [
 # path need to be changed according to comps
 paths = {
     "Chrome": "C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe",
-    "Music": "H:\\87 HONEY SINGH DJ MIX",
+    "Music": "C:\\Dhroov\\MUSIC",
     "Notepad":"C:\\Windows\\system32\\notepad.exe",
-    "Calculator":"C:\\Windows\\System32\\calc.exe"
+    "Calculator":"C:\Windows\System32\\calc.exe"
 }
