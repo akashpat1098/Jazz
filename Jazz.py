@@ -107,6 +107,7 @@ if __name__=="__main__":
             query=query.replace("search","")
             query=query.replace("in","")
             query=query.replace("about","")
+            query=query.replace("of","")
             results=on.search_on_wikipedia(query=query)
             speak("According to Wikipedia")
             print(results)
@@ -144,10 +145,12 @@ if __name__=="__main__":
                     break
             # when name is not there in emails dict then it goes in these else block
             else:
-                speak("We don't have a data of that person. Are yoy willing to give the data of that person")
+                speak("We don't have a data of that person. Are you willing to give the data of that person")
+                print("We don't have a data of that person. Are you willing to give the data of that person")
                 res=takeCommand()   #confirmation for 
                 if res=="yes":
                     speak("Sir,you have to give the data of that person manually for simplicity purpose!")
+                    print("Sir,you have to give the data of that person manually for simplicity purpose!")
                     speak("What is the name of person,sir?")
                     to=input("Type the name of a person:")
                     if to in emails.keys():#checking again if the given name is in the dict or not
