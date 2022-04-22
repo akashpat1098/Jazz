@@ -230,7 +230,7 @@ if __name__=="__main__":
             speak(f"The current temperature is {temperature}, but it feels like {feels_like}")
             speak(f"Also, the weather report talks about {weather}")
 
-        elif "hello" in query:
+        elif "who are you" in query:
             speak("Hello Sir , I am Jazz. Your personal  AI assistant! How may I help you?")
         
         elif "how are you" in query:
@@ -255,12 +255,10 @@ if __name__=="__main__":
             query=query.replace("search","")
             query=query.replace(".com","")
             query=query.replace("of","")
-            on.search_website(query.strip()) 
-        
-        elif "message" in query:
-            speak("Dhroov randi")
-            speak("kaam kiya kya lavdae ,jo bola thaa madrchodh")
-            speak("Maa ki chuhhuuuuu......")
-            speak("Dhroov chuutiya , gaandu apna kaam kar lavdae")
+            on.search_website(query.strip())
+            speak(f"{query} opened.") 
 
-        
+        elif 'time' in query:
+            current_time = os.report_time()
+            print(f"the current time is {current_time}")
+            speak(f"the current time is {current_time}")

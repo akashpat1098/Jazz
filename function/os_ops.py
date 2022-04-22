@@ -3,7 +3,7 @@ import subprocess as sp
 import random
 import socket
 import utils
-
+import datetime
 # play music randomly from given file directory
 def playMusic():
     music_dir = utils.paths["Music"]
@@ -32,3 +32,6 @@ def find_my_ip():
     ip_address=socket.gethostbyname(hostname)
     return ip_address
 
+def report_time():
+    current_time = datetime.datetime.now().strftime('%I:%M %p')
+    return current_time
