@@ -103,7 +103,7 @@ if __name__=="__main__":
         elif "wikipedia" in query: #sometime with searchable name prblm
             speak("Searching Wikipedia...")
             query=query.replace("wikipedia","")#replacing the word "wikipedia" from query
-            query=query.replace("Please","")
+            query=query.replace("please","")
             query=query.replace("search","")
             query=query.replace("in","")
             query=query.replace("about","")
@@ -245,10 +245,15 @@ if __name__=="__main__":
         elif "bye" in query:
             speak("Okay sir! Bye")
             break
-        elif "search on youtube" in query:
-            query=query.replace("search on youtube","")
+        elif "youtube" in query:
+            query=query.replace("youtube","")
+            query=query.replace("search","")
+            query=query.replace("on","")
+            query=query.replace("about","")
+            query=query.replace("in","")
             query=query.replace("Jazz","")
             on.search_on_youtube(query=query)
+            
         elif "website" in query:
             query=query.replace("Jazz","")
             query=query.replace("website","")
